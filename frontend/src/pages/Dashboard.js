@@ -14,7 +14,7 @@ function Dashboard() {
     } else {
       setStudent(JSON.parse(studentData));
     }
-    axios.get('http://localhost:5000/api/exams')
+    axios.get(' https://exam-registration-system-01z9.onrender.com/api/exams')
       .then(res => setExams(res.data))
       .catch(err => console.log(err));
   }, [navigate]);
@@ -27,7 +27,7 @@ function Dashboard() {
 
   const handlePayment = async (exam) => {
     try {
-      const orderRes = await axios.post('http://localhost:5000/api/payments/create-order', {
+      const orderRes = await axios.post(' https://exam-registration-system-01z9.onrender.com/api/payments/create-order', {
         amount: exam.fee,
         exam_id: exam.id,
         student_id: student.id
@@ -43,7 +43,7 @@ function Dashboard() {
         description: exam.exam_name,
         order_id: order.id,
         handler: async (response) => {
-          await axios.post('http://localhost:5000/api/payments/verify', {
+          await axios.post(' https://exam-registration-system-01z9.onrender.com/api/payments/verify', {
             student_id: student.id,
             exam_id: exam.id,
             transaction_id: response.razorpay_payment_id,

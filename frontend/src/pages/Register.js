@@ -21,7 +21,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post(' https://exam-registration-system-01z9.onrender.com/api/auth/register', formData);
       setSuccess('Registration successful! Redirecting to login...');
       setTimeout(() => navigate('/'), 2000);
     } catch (err) {
